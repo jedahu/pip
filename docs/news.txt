@@ -13,6 +13,21 @@ Beta and final releases planned for the first half of 2012.
 develop (unreleased)
 --------------------
 
+* Fixed issue #326 - don't crash when a package's setup.py emits UTF-8 and
+  then fails. Thanks Marc Abramowitz.
+
+* Added ``--target`` option for installing directly to arbitrary directory.
+  Thanks Stavros Korokithakis.
+
+* Added support for authentication with Subversion repositories. Thanks
+  Qiangning Hong.
+
+* Fixed issue #315 - ``--download`` now downloads dependencies as well.
+  Thanks Qiangning Hong.
+
+* Errors from subprocesses will display the current working directory.
+  Thanks Antti Kaihola.
+
 * Fixed issue #369 - compatibility with Subversion 1.7. Thanks Qiangning
   Hong. Note that setuptools remains incompatible with Subversion 1.7; to
   get the benefits of pip's support you must use Distribute rather than
@@ -47,6 +62,10 @@ develop (unreleased)
 * Fixed issue #366 - pip throws IndexError when it calls `scraped_rel_links`
 
 * Fixed issue #22 - pip search should set and return a userful shell status code
+
+* Fixed issue #351 and #365 - added global ``--exists-action`` command line
+  option to easier script file exists conflicts, e.g. from editable
+  requirements from VCS that have a changed repo URL.
 
 
 1.0.2 (2011-07-16)

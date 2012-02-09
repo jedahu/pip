@@ -50,6 +50,8 @@ sys.path = [src_folder] + sys.path
 
 def create_virtualenv(where, distribute=False):
     import virtualenv
+    if sys.version_info[0] > 2:
+        distribute = True
     virtualenv.create_environment(
         where, use_distribute=distribute, unzip_setuptools=True)
 
@@ -425,7 +427,6 @@ class FastTestPipEnvironment(TestPipEnvironment):
         else:
             demand_dirs(self.venv_path)
             demand_dirs(self.scratch_path)
-
 
             # Create a virtualenv and remember where it's putting things.
             create_virtualenv(self.venv_path, distribute=self.use_distribute)

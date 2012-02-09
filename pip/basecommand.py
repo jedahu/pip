@@ -24,6 +24,7 @@ command_dict = {}
 # for backwards compatibiliy
 get_proxy = urlopen.get_proxy
 
+
 class Command(object):
     name = None
     usage = None
@@ -48,8 +49,9 @@ class Command(object):
         # Make sure we have all global options carried over
         for attr in ['log', 'proxy', 'require_venv',
                      'log_explicit_levels', 'log_file',
-                     'timeout', 'default_vcs', 'skip_requirements_regex',
-                     'no_input']:
+                     'timeout', 'default_vcs',
+                     'skip_requirements_regex',
+                     'no_input', 'exists_action']:
             setattr(options, attr, getattr(initial_options, attr) or getattr(options, attr))
         options.quiet += initial_options.quiet
         options.verbose += initial_options.verbose
@@ -73,6 +75,12 @@ class Command(object):
             logger.explicit_levels = True
 
         self.setup_logging()
+
+        if options.no_input:
+            os.environ['PIP_NO_INPUT'] = '1'
+
+        if options.exists_action:
+            os.environ['PIP_EXISTS_ACTION'] = ''.join(options.exists_action)
 
         if options.require_venv:
             # If a venv is required check if it can really be found
