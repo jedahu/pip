@@ -5,13 +5,13 @@ News
 Changelog
 =========
 
-Next release (1.1) schedule
+Next release (1.2) schedule
 ---------------------------
 
-Beta and final releases planned for the first half of 2012.
+Beta and final releases planned for the second half of 2012.
 
-develop (unreleased)
---------------------
+1.1 (2012-02-16)
+----------------
 
 * Fixed issue #326 - don't crash when a package's setup.py emits UTF-8 and
   then fails. Thanks Marc Abramowitz.
@@ -55,9 +55,9 @@ develop (unreleased)
 * Fixed issue #49 - pip install -U no longer reinstalls the same versions of
   packages. Thanks iguananaut for the pull request.
 
-* Removed ``-E`` option and ``PIP_RESPECT_VIRTUALENV``; both use a
-  restart-in-venv mechanism that's broken, and neither one is useful since
-  every virtualenv now has pip inside it.
+* Removed ``-E``/``--environment`` option and ``PIP_RESPECT_VIRTUALENV``;
+  both use a restart-in-venv mechanism that's broken, and neither one is
+  useful since every virtualenv now has pip inside it.
 
 * Fixed issue #366 - pip throws IndexError when it calls `scraped_rel_links`
 
